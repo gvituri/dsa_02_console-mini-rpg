@@ -7,14 +7,9 @@ class Map:
         self.border_map = self.add_map_borders(self.raw_map)
         self.visual_map = self.assemple_visual_map(self.border_map)
         self.barrier_map = self.assemple_barrier_map(self.border_map)
-
-        self.print_test(self.raw_map)
-        self.print_test(self.border_map)
-        self.print_test(self.visual_map)
-        self.print_test(self.barrier_map)
         
     def read_file(self, name):
-        map_file = open("./lib/files/%s.csv" %(name), "r")
+        map_file = open("./lib/files/map_%s.csv" %(name), "r")
         map_data = map_file.read()
         map_rows = map_data.split("\n")
         raw_map = []
@@ -86,8 +81,23 @@ class Map:
 
         return barrier_chars
 
-    def print_test(self, map):
-        for row in map:
-            for item in row:
-                print(item, end = "")
-            print()
+    def position_npc(self, npc_list):
+        for npc in npc_list:
+            self.visual_map[npc.coordinate[1]+9][npc.coordinate[0]+9] = npc.symbol
+
+    def print_map(self, type = "raw"):
+        if type == "visual":
+            for row in self.visual_map:
+                for item in row:
+                    print(item, end = "")
+                print()
+        elif type == "barrier":
+            for row in self.barrier_map:
+                for item in row:
+                    print(item, end = "")
+                print()
+        else:
+            for row in self.raw_map:
+                for item in row:
+                    print(item, end = "")
+                print()            
