@@ -25,29 +25,30 @@ class Map:
         map = deepcopy(raw_map)
 
         for x in range(10):
-            map.append(["╳"] * len(map[0]))
+            map.append(["x"] * len(map[0]))
 
         for x in range(10):
-            map.insert(0, ["╳"] * len(map[0]))
+            map.insert(0, ["x"] * len(map[0]))
 
         for row in map:
             for x in range(10):
-                row.append("╳")
+                row.append("x")
         
         for row in map:
             for x in range(10):
-                row.insert(0, "╳")
+                row.insert(0, "x")
 
         return map
 
     def assemple_visual_map(self, border_map):
+        #TODO here, get tile_palette and apply on the border_map.
 
         map = deepcopy(border_map)
 
         i = 0
         for row in map:
             for char in row:
-                if char == "╳":
+                if char == "x":
                     row[i] = " "
                 i += 1
             i = 0

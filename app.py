@@ -1,6 +1,10 @@
 from lib.map import Map
 from lib.npc import Npc
+#TODO Before loading the map, create the tile palete and make map
+#receive tile_palete to build the visuals
 
+#TODO Remake barrier_chars with fewer chars
+#Remake Test map. simpler aproach
 test_map = Map("test")
 test_map.print_map()
 test_map.print_map("visual")
