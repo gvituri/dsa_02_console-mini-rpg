@@ -1,15 +1,37 @@
+from os import system
+import time
+
+from lib.tile import Tile
 from lib.map import Map
 from lib.npc import Npc
-#TODO Before loading the map, create the tile palete and make map
-#receive tile_palete to build the visuals
 
-#TODO Remake barrier_chars with fewer chars
-#Remake Test map. simpler aproach
-test_map = Map("test")
+#Loading tile information and assembling tile palette for usage in map rendering
+tile_file = open("./lib/files/tiles.csv", "r")
+tile_data = tile_file.read()
+tile_rows = tile_data.split("\n")
+tile_list = []
+
+for row in tile_rows:
+    split_row = row.split(",")
+    tile_list.append(split_row)
+
+tile_palette = []
+
+for tile in tile_list:
+    tile_palette.append(Tile(tile))
+
+#Loading and testing map rendering and colliders
+test_map = Map("test", tile_palette)
 test_map.print_map()
 test_map.print_map("visual")
 test_map.print_map("barrier")
 
+while True:
+    system("clear")
+    test_map.print_map("visual")
+    time.sleep(1)
+
+'''
 #load_npc's
 npc_file = open("./lib/files/npc_test.csv", "r")
 npc_data = npc_file.read()
@@ -29,3 +51,4 @@ test_map.position_npc(npc_list)
 test_map.print_map()
 test_map.print_map("visual")
 test_map.print_map("barrier")
+'''

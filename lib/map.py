@@ -1,8 +1,9 @@
 from copy import deepcopy
 
 class Map:
-    def __init__(self, name) -> None:
+    def __init__(self, name, tile_palette) -> None:
         self.name = name
+        self.tile_palette = tile_palette
         self.raw_map = self.read_file(self.name)
         self.border_map = self.add_map_borders(self.raw_map)
         self.visual_map = self.assemple_visual_map(self.border_map)
@@ -43,15 +44,15 @@ class Map:
     def assemple_visual_map(self, border_map):
         #TODO here, get tile_palette and apply on the border_map.
 
-        map = deepcopy(border_map)
+        map = []
 
-        i = 0
-        for row in map:
-            for char in row:
-                if char == "x":
-                    row[i] = " "
-                i += 1
-            i = 0
+        for row in border_map:
+            tiled_row = []
+            for item in row:
+                for char in self.tile_palette:
+                    if item == char.code:
+                        tiled_row.append(char)
+            map.append(tiled_row)
 
         return map
 
