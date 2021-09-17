@@ -28,7 +28,10 @@ tile_palette = []
 
 for tile in tile_map:
     tile_palette.append(Tile(tile))
+    print(tile[3], tile[4])
 
+for tile in tile_palette:
+    print(tile.sprite_sheet, tile.weight_distribution)
 #create the map with each singular tile
 tiled_map = []
 for row in raw_map:
@@ -39,6 +42,7 @@ for row in raw_map:
                 tiled_row.append(char)
     tiled_map.append(tiled_row)
 
+'''
 #prints the map with each tic
 while True:
     system("clear")
@@ -47,3 +51,4 @@ while True:
             print(item, end="")
         print()
     time.sleep(1)
+'''
