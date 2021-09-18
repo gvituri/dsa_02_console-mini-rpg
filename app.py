@@ -22,14 +22,19 @@ for tile in tile_list:
 
 #Loading and testing map rendering and colliders
 test_map = Map("test", tile_palette)
-test_map.print_map()
-test_map.print_map("visual")
-test_map.print_map("barrier")
+
+
 
 while True:
     system("clear")
     test_map.print_map("visual")
     time.sleep(1)
+
+
+#TODO Make map_content.cvs to get player spawns, npc's positions, monster spawns, etc...
+#read and position content on the map
+#get the player view
+#print the player view every 1'
 
 '''
 #load_npc's
